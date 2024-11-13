@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3 - Cambio de Color</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <div class="menu">
+        <a href="/index.html">Home</a>
+        <a href="/Ejercicio1index.html">Ejercicio 1</a>
+        <a href="/Ejercicio2index.html">Ejercicio 2</a>
+        <a href="/Ejercicio3index.html">Ejercicio 3</a>
+        <a href="/Ejercicio4index.html">Ejercicio 4</a>
+        <a href="/Quinto punto/Ejercicio5index.html">Ejercicio 5</a>
+    </div>
+
+    <p id="texto">Este texto cambiará de color</p>
+    <button id="btn-cambiar-color">Cambiar Color</button>
+
+    <script>
+      
+        class Texto {
+            constructor(elemento) {
+                this.elemento = elemento;  
+            }
+        }
+
+        
+        class TextoColor extends Texto {
+            cambiarColor(nuevoColor) {
+                this.elemento.style.color = nuevoColor;  
+            }
+        }
+
+        
+        const miTexto = new TextoColor(document.getElementById("texto"));
+
+       
+        document.getElementById("btn-cambiar-color").onclick = () => {
+            const colores = ["red", "blue", "green", "purple", "orange"];  
+            const colorAleatorio = colores[Math.floor(Math.random() * colores.length)];  
+            miTexto.cambiarColor(colorAleatorio);  
+        };
+    </script>
+
+</body>
+</html>

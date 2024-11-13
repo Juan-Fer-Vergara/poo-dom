@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 - Usuario y Roles</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <div class="menu">
+        <a href="/index.html">Home</a>
+        <a href="/Ejercicio1index.html">Ejercicio 1</a>
+        <a href="/Ejercicio2index.html">Ejercicio 2</a>
+        <a href="/Ejercicio3index.html">Ejercicio 3</a>
+        <a href="/Ejercicio4index.html">Ejercicio 4</a>
+        <a href="/Quinto punto/Ejercicio5index.html">Ejercicio 5</a>
+    </div>
+
+    <div id="contenedor">
+        <button id="btn-administrador">Mostrar Administrador</button>
+        <button id="btn-comercial">Mostrar Comercial</button>
+        <p id="mensaje"></p>
+    </div>
+
+    <script>
+        
+        class Usuario {
+            constructor(nombre, edad) {
+                this.nombre = nombre;  
+                this.edad = edad;      
+            }
+        }
+
+        
+        class Administrador extends Usuario {
+            constructor(nombre, edad, rol){
+                super(nombre, edad)
+                this.rol = rol
+            }
+            mostrarRol() {
+                const mensaje = document.getElementById("mensaje"); 
+                mensaje.innerText = `Hello, me llamo ${this.nombre}, y soy un ${this.rol} de Krazy`
+            }
+        }
+
+      
+        class Comercial extends Usuario {
+            constructor(nombre, edad, rol){
+                super(nombre, edad)
+                this.rol = rol
+            }
+            mostrarRol() {
+                const mensaje = document.getElementById("mensaje"); 
+                mensaje.innerText = `Hello, me llamo ${this.nombre}, y soy un ${this.rol} de Krazy`
+            }
+        }
+
+       
+        const admin = new Administrador("Juan", 19, "administrador");
+        const comercial = new Comercial("Daniel", 20, "acesor");
+
+        
+        document.getElementById("btn-administrador").onclick = () => admin.mostrarRol();
+        document.getElementById("btn-comercial").onclick = () => comercial.mostrarRol();
+    </script>
+
+</body>
+</html>

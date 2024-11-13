@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4 - Carrito de Compras</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <div class="menu">
+        <a href="/index.html">Home</a>
+        <a href="/Ejercicio1index.html">Ejercicio 1</a>
+        <a href="/Ejercicio2index.html">Ejercicio 2</a>
+        <a href="/Ejercicio3index.html">Ejercicio 3</a>
+        <a href="/Ejercicio4index.html">Ejercicio 4</a>
+        <a href="/Quinto punto/Ejercicio5index.html">Ejercicio 5</a>
+    </div>
+
+    <h3>Carrito de Compras</h3>
+    <p id="total">Total: $0</p>
+    <button id="btn-agregar">Agregar Producto</button>
+    <button id="btn-limpiar">Vaciar Carrito</button>
+
+    <script>
+        
+        class CarritoCompras {
+            constructor() {
+                this.productos = [];  
+                this.total = 0;  
+            }
+
+            agregarProducto(producto, precio) {
+                this.productos.push({ producto, precio });  
+                this.total += precio;  
+                this.mostrarTotal();  
+            }
+
+            vaciarCarrito() {
+                this.productos = [];  
+                this.total = 0;  
+                this.mostrarTotal();  
+            }
+
+            mostrarTotal() {
+                const totalElemento = document.getElementById("total"); 
+                totalElemento.innerText = `Total: $${this.total}`;  
+            }
+        }
+
+        
+        const miCarrito = new CarritoCompras();
+
+       
+        document.getElementById("btn-agregar").onclick = () => {
+            const productoAleatorio = `Producto ${Math.floor(Math.random() * 100)}`;  
+            const precioAleatorio = Math.floor(Math.random() * 100) + 1;  
+            miCarrito.agregarProducto(productoAleatorio, precioAleatorio);  
+        };
+
+        
+        document.getElementById("btn-limpiar").onclick = () => {
+            miCarrito.vaciarCarrito();  
+        };
+    </script>
+
+</body>
+</html>

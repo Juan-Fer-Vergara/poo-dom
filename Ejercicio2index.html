@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 - Lista de Tareas</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <div class="menu">
+        <a href="/index.html">Home</a>
+        <a href="/Ejercicio1index.html">Ejercicio 1</a>
+        <a href="/Ejercicio2index.html">Ejercicio 2</a>
+        <a href="/Ejercicio3index.html">Ejercicio 3</a>
+        <a href="/Ejercicio4index.html">Ejercicio 4</a>
+        <a href="/Quinto punto/Ejercicio5index.html">Ejercicio 5</a>
+    </div>
+
+    <div id="contenedor">
+        <input type="text" id="nueva-tarea" placeholder="Escribe una tarea">
+        <button id="btn-agregar">Agregar Tarea</button>
+        <ul id="lista-tareas"></ul>
+    </div>
+
+    <script>
+        
+        class ListaTareas {
+            constructor() {
+                this.contadorId = 0;  
+            }
+
+            agregarTarea(tarea) {
+                this.contadorId++;  
+                const li = document.createElement("li");  
+                li.id = `tarea-${this.contadorId}`;  
+                li.innerText = tarea;  
+
+                const lista = document.getElementById("lista-tareas"); 
+                lista.appendChild(li);  
+            }
+        }
+
+      
+        const miLista = new ListaTareas();
+
+        
+        document.getElementById("btn-agregar").onclick = () => {
+            const nuevaTarea = document.getElementById("nueva-tarea").value;  
+            if (nuevaTarea) {
+                miLista.agregarTarea(nuevaTarea);  
+                document.getElementById("nueva-tarea").value = ""; 
+            }
+        };
+    </script>
